@@ -6,6 +6,7 @@ function App() {
   const [favoritos, establecerFavoritos] = useState([])
   const [cargando, establecerCargando] = useState(true)
   const [error, establecerError] = useState('')
+  const [busqueda, establecerBusqueda] = useState('')
 
   useEffect(() => {
     const controlador = new AbortController()
@@ -54,12 +55,29 @@ function App() {
     })
   }
 
+  const usuariosFiltrados = usuarios.filter((usuario) =>
+    usuario.name.toLowerCase().includes(busqueda.trim().toLowerCase())
+  )
+
   return (
+    
+
     <div>
       <h1>Directorio de usuarios</h1>
       <p>Busca usuarios y agrega tus favoritos.</p>
 
       <p>Favoritos: {favoritos.length}</p>
+      <div>
+        <label htmlFor="busqueda">Buscar por nombre</label>
+
+        <input
+          id="busqueda"
+          type="search"
+          placeholder="Escribe un nombre"
+          value={busqueda}
+          onChange={(evento) => establecerBusqueda(evento.target.value)}
+        />
+      </div>
 
       {cargando && <p role="status">Cargando…</p>}
 
@@ -67,7 +85,11 @@ function App() {
 
       {!cargando && !error && (
         <div>
-          {usuarios.map((usuario) => (
+          {usuariosFiltrados.length === 0 && (
+            <p>No se encontraron usuarios.</p>
+          )}
+
+          {usuariosFiltrados.map((usuario) => (
             <TarjetaUsuario
               key={usuario.id}
               usuario={usuario}
@@ -78,6 +100,7 @@ function App() {
         </div>
       )}
     </div>
+    
   )
 }
 
