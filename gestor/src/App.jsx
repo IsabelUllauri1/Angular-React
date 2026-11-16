@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import TarjetaUsuario from './components/tarjetaUsuario'
+import { filtrarUsuarios } from './utilidades/filtrarUsuarios.js'
 
 function App() {
   const [usuarios, establecerUsuarios] = useState([])
@@ -55,9 +56,7 @@ function App() {
     })
   }
 
-  const usuariosFiltrados = usuarios.filter((usuario) =>
-    usuario.name.toLowerCase().includes(busqueda.trim().toLowerCase())
-  )
+  const usuariosFiltrados = filtrarUsuarios(usuarios, busqueda)
 
   return (
     
