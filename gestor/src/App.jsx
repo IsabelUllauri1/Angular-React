@@ -61,7 +61,7 @@ function App() {
   return (
     
 
-    <div>
+    <div className="contenedor">
       <h1>Directorio de usuarios</h1>
       <p>Busca usuarios y agrega tus favoritos.</p>
 
