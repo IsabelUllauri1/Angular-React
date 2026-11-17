@@ -1,1 +1,121 @@
 /* You can add global styles to this file, and also import other style files */
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #460632;
+  background-color: #eae1e8;
+}
+
+/* Contenedor principal */
+.contenedor {
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+h1 {
+  color: #49173d;
+  font-size: 28px;
+}
+
+/* Buscador */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #a8508e;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Tarjetas de usuarios */
+.tarjeta {
+  background-color: #e6dbe2;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #a8508e;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+}
+
+.tarjeta h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.tarjeta p {
+  margin: 10px 0;
+}
+
+/* Botón de favorito */
+.tarjeta button {
+  padding: 8px 12px;
+  background-color: #f1e2a8;
+  color: #685d3b;
+  border: 1px solid #8c730d;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Usuario marcado como favorito */
+.tarjeta button[aria-pressed="true"] {
+  background-color: #f1e2a8;
+  color: #685d3b;
+  border-color: #8c730d;
+}
+
+/* Botón para mostrar solo favoritos */
+.boton-filtro {
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #c98fbf;
+  color: white;
+  border: 1px solid #a55f99;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.boton-filtro[aria-pressed="true"] {
+  background-color: #c98fbf;
+  color: white;
+  border: 1px solid #a55f99;
+}
+
+/* Mensaje de error */
+[role="alert"] {
+  color: #b00020;
+}
+
+/* Navegación con el teclado */
+:focus-visible {
+  outline: 3px solid #d4bf1f;
+  outline-offset: 3px;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 600px) {
+  .contenedor {
+    margin: 20px auto;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .tarjeta {
+    padding: 15px;
+  }
+}

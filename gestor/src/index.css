@@ -7,7 +7,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: #333333;
-  background-color: #eeeeee;
+  background-color: #eae1e8;
 }
 
 /* Contenedor de la aplicación */
@@ -18,7 +18,7 @@ body {
 }
 
 h1 {
-  color: #2457a7;
+  color: #711853;
   font-size: 28px;
 }
 
@@ -60,9 +60,9 @@ input {
 /* Botón de favorito */
 .tarjeta button {
   padding: 8px 12px;
-  background-color: #2457a7;
+  background-color: #c98fbf;
   color: white;
-  border: 1px solid #2457a7;
+  border: 1px solid #a55f99;
   border-radius: 4px;
   font-size: 15px;
   cursor: pointer;
@@ -108,9 +108,9 @@ input {
 .boton-filtro {
   padding: 10px;
   margin-bottom: 20px;
-  background-color: #ebe37e;
-  color: black;
-  border: 1px solid #918919;
+  background-color: #c98fbf;
+  color: white;
+  border: 1px solid #a55f99;
   border-radius: 4px;
   font-size: 16px;
   cursor: pointer;
