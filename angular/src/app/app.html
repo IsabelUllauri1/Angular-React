@@ -25,6 +25,15 @@
     />
   </div>
 
+  <button
+    type="button"
+    class="boton-filtro"
+    (click)="cambiarFiltroFavoritos()"
+    [attr.aria-pressed]="soloFavoritos()"
+  >
+    {{ soloFavoritos() ? 'Mostrar todos' : 'Mostrar solo favoritos' }}
+  </button>
+
   @if (!cargando() && !error()) {
     @for (usuario of usuariosFiltrados(); track usuario.id) {
       <app-tarjeta-usuario

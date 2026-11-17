@@ -1,24 +1,28 @@
-import { TestBed } from '@angular/core/testing';
-import { App } from './app';
+import { expect, test } from 'vitest';
+import { filtrarUsuarios } from './utilidades/filtrarUsuarios';
+import { Usuario } from './usuario';
 
-describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-    })
-      .compileComponents();
-  });
+test('busca por nombre ignorando mayúsculas y espacios exteriores', () => {
+  const usuarios: Usuario[] = [
+    {
+      id: 1,
+      name: 'Ana Torres',
+      email: 'ana@ejemplo.com',
+      address: {
+        city: 'Cuenca'
+      }
+    },
+    {
+      id: 2,
+      name: 'Luis Pérez',
+      email: 'luis@ejemplo.com',
+      address: {
+        city: 'Quito'
+      }
+    }
+  ];
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  const resultado = filtrarUsuarios(usuarios, ' ANA ');
 
-  it('should render title', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, carpeta-angular');
-  });
+  expect(resultado).toEqual([usuarios[0]]);
 });

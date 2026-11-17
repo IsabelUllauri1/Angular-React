@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TarjetaUsuario } from './componentes/tarjeta-usuario';
 import { Usuario } from './usuario';
+import { filtrarUsuarios } from './utilidades/filtrarUsuarios';
 
 @Component({
   selector: 'app-root',
@@ -28,13 +29,21 @@ export class App implements OnInit {
   error = signal('');
 
   busqueda = signal('');
+  soloFavoritos = signal(false);
 
   usuariosFiltrados = computed(() => {
-    const texto = this.busqueda().trim().toLowerCase();
-
-    return this.usuarios().filter((usuario) =>
-      usuario.name.toLowerCase().includes(texto)
+    const usuariosPorNombre = filtrarUsuarios(
+      this.usuarios(),
+      this.busqueda()
     );
+
+    if (this.soloFavoritos()) {
+      return usuariosPorNombre.filter((usuario) =>
+        this.favoritos().includes(usuario.id)
+      );
+    }
+
+    return usuariosPorNombre;
   });
 
   ngOnInit() {
@@ -68,5 +77,8 @@ export class App implements OnInit {
 
       return [...favoritosActuales, idUsuario];
     });
+  }
+  cambiarFiltroFavoritos() {
+    this.soloFavoritos.update((valorActual) => !valorActual);
   }
 }
