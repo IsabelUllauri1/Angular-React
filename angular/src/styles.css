@@ -6,7 +6,7 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   color: #460632;
   background-color: #eae1e8;
 }
@@ -41,7 +41,7 @@ input {
 
 /* Tarjetas de usuarios */
 .tarjeta {
-  background-color: #e6dbe2;
+  background-color: #ebeaeb;
   padding: 20px;
   margin-bottom: 15px;
   border: 1px solid #a8508e;
@@ -101,7 +101,7 @@ input {
 
 /* Navegación con el teclado */
 :focus-visible {
-  outline: 3px solid #d4bf1f;
+  outline: 3px solid #a79824;
   outline-offset: 3px;
 }
 
