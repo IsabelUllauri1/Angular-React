@@ -2,9 +2,11 @@ import {
   Component,
   DestroyRef,
   OnInit,
+  computed,
   inject,
   signal
 } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TarjetaUsuario } from './componentes/tarjeta-usuario';
@@ -24,6 +26,16 @@ export class App implements OnInit {
   favoritos = signal<number[]>([]);
   cargando = signal(true);
   error = signal('');
+
+  busqueda = signal('');
+
+  usuariosFiltrados = computed(() => {
+    const texto = this.busqueda().trim().toLowerCase();
+
+    return this.usuarios().filter((usuario) =>
+      usuario.name.toLowerCase().includes(texto)
+    );
+  });
 
   ngOnInit() {
     this.cargarUsuarios();

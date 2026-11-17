@@ -12,8 +12,21 @@
     <p role="alert">{{ error() }}</p>
   }
 
+  <div>
+    <label for="busqueda">Buscar por nombre</label>
+
+    <input
+      #campoBusqueda
+      id="busqueda"
+      type="search"
+      placeholder="Escribe un nombre"
+      [value]="busqueda()"
+      (input)="busqueda.set(campoBusqueda.value)"
+    />
+  </div>
+
   @if (!cargando() && !error()) {
-    @for (usuario of usuarios(); track usuario.id) {
+    @for (usuario of usuariosFiltrados(); track usuario.id) {
       <app-tarjeta-usuario
         [usuario]="usuario"
         [esFavorito]="favoritos().includes(usuario.id)"
