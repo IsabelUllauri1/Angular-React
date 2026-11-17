@@ -1,0 +1,13 @@
+<div class="tarjeta">
+  <h2>{{ usuario().name }}</h2>
+  <p>Correo: {{ usuario().email }}</p>
+  <p>Ciudad: {{ usuario().address.city }}</p>
+
+  <button
+    type="button"
+    (click)="favoritoCambiado.emit(usuario().id)"
+    [attr.aria-pressed]="esFavorito()"
+  >
+    {{ esFavorito() ? 'Quitar favorito' : 'Favorito' }}
+  </button>
+</div>
