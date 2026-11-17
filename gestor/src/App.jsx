@@ -8,6 +8,7 @@ function App() {
   const [cargando, establecerCargando] = useState(true)
   const [error, establecerError] = useState('')
   const [busqueda, establecerBusqueda] = useState('')
+  const [soloFavoritos, establecerSoloFavoritos] = useState(false)
 
   useEffect(() => {
     const controlador = new AbortController()
@@ -56,7 +57,11 @@ function App() {
     })
   }
 
-  const usuariosFiltrados = filtrarUsuarios(usuarios, busqueda)
+  const usuariosPorNombre = filtrarUsuarios(usuarios, busqueda)
+
+  const usuariosFiltrados = soloFavoritos
+    ? usuariosPorNombre.filter((usuario) => favoritos.includes(usuario.id))
+    : usuariosPorNombre
 
   return (
     
@@ -77,6 +82,15 @@ function App() {
           onChange={(evento) => establecerBusqueda(evento.target.value)}
         />
       </div>
+
+      <button
+        type="button"
+        className="boton-filtro"
+        onClick={() => establecerSoloFavoritos((valorActual) => !valorActual)}
+        aria-pressed={soloFavoritos}
+      >
+        {soloFavoritos ? 'Mostrar todos' : 'Mostrar solo favoritos'}
+      </button>
 
       {cargando && <p role="status">Cargando…</p>}
 

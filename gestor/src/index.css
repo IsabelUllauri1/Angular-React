@@ -104,3 +104,15 @@ input {
     padding: 15px;
   }
 }
+
+.boton-filtro {
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #ebe37e;
+  color: black;
+  border: 1px solid #918919;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
